@@ -62,7 +62,7 @@ const userController = {
         .catch((err) => res.json(err));
     },
       // delete User
-  UserPizza({ params }, res) {
+  deleteUser({ params }, res) {
     user.findOneAndDelete({ _id: params.id })
       .then(dbUserData => {
         if (!dbUserData) {
