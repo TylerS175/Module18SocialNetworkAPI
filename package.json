@@ -2,5 +2,23 @@
   "dependencies": {
     "express": "^4.18.1",
     "mongoose": "^6.4.2"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "module18socialnetworkapi",
+  "description": "User Story:",
+  "version": "1.0.0",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TylerS175/Module18SocialNetworkAPI.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TylerS175/Module18SocialNetworkAPI/issues"
+  },
+  "homepage": "https://github.com/TylerS175/Module18SocialNetworkAPI#readme"
 }
