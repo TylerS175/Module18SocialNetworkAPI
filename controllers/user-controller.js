@@ -1,9 +1,9 @@
-const { user } = require('../models');
+const { User, Thought } = require('../models');
 
 const userController = {
     //get all Users
-    getAlluser(req, res) {
-        user.find({})
+    getAllUser(req, res) {
+        User.find({})
         .populate({
             path: "friends",
             select:"-__v",
@@ -18,7 +18,7 @@ const userController = {
     },
     // Get one user by id 
     getUserById({ params }, res) {
-        user.findOne ({ _id: params.id })
+        User.findOne ({ _id: params.id })
         .populate({
             path: "thoughts",
             select: "-__v",
@@ -30,7 +30,7 @@ const userController = {
         .select("-__v")
         .then((dbUserData) => {
             if (!dbUserData) {
-                return res.status(404).json({ message: "No user found with this id! "});
+                return res.status(404).json({ message: "No user found with this id!"});
             }
             res.json(dbUserData);
         })
@@ -41,14 +41,14 @@ const userController = {
     },
     // create user 
     createUser({ body }, res) {
-        user.create(body) 
+        User.create(body) 
         .then((dbUserData) => res.json(dbUserData))
         .catch((err) => res.json(err));
     },
 
     //Updating User by ID 
-    updateUser({ parmas, body }, res) {
-        user.findOneAndUpdate({ _id: params.id}, body, {
+    updateUser({ params, body }, res) {
+        User.findOneAndUpdate({ _id: params.id}, body, {
             new: true,
             runValidators: true, 
         })
@@ -63,7 +63,7 @@ const userController = {
     },
       // delete User
   deleteUser({ params }, res) {
-    user.findOneAndDelete({ _id: params.id })
+    User.findOneAndDelete({ _id: params.id })
       .then(dbUserData => {
         if (!dbUserData) {
           res.status(404).json({ message: 'No user found with this id!' });
